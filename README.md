@@ -1,5 +1,5 @@
 # BASE64/BLOWFISH ENCODER
-### A simple python script file to create and read BASE64/BLOWFISH encoded text strings using a unique corporate Enterprise key.
+### A simple python script file to create and read BASE64/BLOWFISH encoded text strings using a corporate Enterprise key.
 
 Usage: python base64_blowfish.py
 
