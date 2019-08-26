@@ -27,13 +27,13 @@ from Crypto.Cipher import Blowfish
 # -------------------------------------------------------------------------------------
 
 os.system("clear")
-print " ____  _     _____        _______ ___ ____  _   _  __   _  _     _____ _   _  ____ ___  ____  _____ ____   " 
-print "| __ )| |   / _ \ \      / /  ___|_ _/ ___|| | | |/ /_ | || |   | ____| \ | |/ ___/ _ \|  _ \| ____|  _ \  "
-print "|  _ \| |  | | | \ \ /\ / /| |_   | |\___ \| |_| | '_ \| || |_  |  _| |  \| | |  | | | | | | |  _| | |_) | "
-print "| |_) | |__| |_| |\ V  V / |  _|  | | ___) |  _  | (_) |__   _| | |___| |\  | |__| |_| | |_| | |___|  _ <  "
-print "|____/|_____\___/  \_/\_/  |_|   |___|____/|_| |_|\___/   |_|   |_____|_| \_|\____\___/|____/|_____|_| \_\ "
-print "                                                                                                           "
-print "                             BY TERENCE BROADBENT BSC CYBER SECURITY (FIRST CLASS)                       \n"
+print "  __   _  _        __  ____  _     _____        _______ ___ ____  _   _    _____ _   _  ____ ___  ____  _____ ____   " 
+print " / /_ | || |      / / | __ )| |   / _ \ \      / /  ___|_ _/ ___|| | | |  | ____| \ | |/ ___/ _ \|  _ \| ____|  _ \  "
+print "| '_ \| || |_    / /  |  _ \| |  | | | \ \ /\ / /| |_   | |\___ \| |_| |  |  _| |  \| | |  | | | | | | |  _| | |_) | "
+print "| (_) |__   _|  / /   | |_) | |__| |_| |\ V  V / |  _|  | | ___) |  _  |  | |___| |\  | |__| |_| | |_| | |___|  _ <  "
+print " \___/   |_|   /_/    |____/|_____\___/  \_/\_/  |_|   |___|____/|_| |_|  |_____|_| \_|\____\___/|____/|_____|_| \_\ "
+print "                                                                                                                    "
+print "                              BY TERENCE BROADBENT BSC CYBER SECURITY (FIRST CLASS)                               \n"
 
 # ------------------------------------------------------------------------------------- 
 # AUTHOR  : Terence Broadbent                                                    
@@ -50,7 +50,7 @@ uniqueKey = 'EnterpriseKey'					# min 4 | max 56 bytes
 # AUTHOR  : Terence Broadbent                                                    
 # CONTRACT: GitHub
 # Version : 1.0                                                                
-# Details : Display program data to the screen
+# Details : Display program data to the screen.
 # Modified: N/A
 # -------------------------------------------------------------------------------------
 
@@ -65,7 +65,7 @@ while len(plainText) % bytes:
 # AUTHOR  : Terence Broadbent                                                    
 # CONTRACT: GitHub
 # Version : 1.0                                                                
-# Details : Encrypt coded message - blowfish 
+# Details : Encrypt coded message - Base64/Blowfish.
 # Modified: N/A
 # -------------------------------------------------------------------------------------
 
@@ -77,7 +77,7 @@ print "Encrypted   : " + encrypted
 # AUTHOR  : Terence Broadbent                                                    
 # CONTRACT: GitHub
 # Version : 1.0                                                                
-# Details : Decrypt coded message - Blowfish
+# Details : Decrypt coded message - Base64/Blowfish.
 # Modified: N/A
 # -------------------------------------------------------------------------------------
 
