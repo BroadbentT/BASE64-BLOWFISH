@@ -1,11 +1,12 @@
 # BASE64/BLOWFISH ENCODER
-## A PYTHON SCRIPT FILE TO ENCODE AND DECODE BASE64/BLOWFISH TEXT STRINGS VIA A 'PASSWORD BASED KEY DERIVATION FUNCTION' (PBKDF2).
+## PYTHON SCRIPT FILES TO ENCODE AND DECODE BASE64/BLOWFISH TEXT STRINGS VIA A 'PASSWORD BASED KEY DERIVATION FUNCTION' (PBKDF2).
 
 Usage: python base64_blowfish.py
 
-| LANGUAGE | FILENAME           | MD5 HASH                         | CONFIDENTIALITY MODE |
-|------    |------              | -------                          | -----                |
-| python   | base64_blowfish.py | f7ca18665c89615e6e1c033e278b6312 | CBC                  |
+| LANGUAGE | FILENAME               | MD5 HASH                         | CONFIDENTIALITY MODE |
+|------    |------                  | -------                          | -----                |
+| python   | base64-blowfish_cbc.py | f7ca18665c89615e6e1c033e278b6312 | CBC                  |
+| python   | base64-blowfish_ecb.py | d0c0530f7572d4cec5c8abef58f91d18 | ECB                  |
 
 - [x] For more information on 'confidentiality mode' - see https://csrc.nist.gov/Projects/Block-Cipher-Techniques/BCM
 
@@ -14,6 +15,9 @@ In cryptology, __Password-Based Key Derivation Function (PBKDF1 and PBKDF2)__ ar
 
 ### CIPHER BLOCK CHAINING MODE
 __The Cipher Block Chaining (CBC) mode__ is a confidentiality mode whose encryption process features the combining (“chaining”) of the plaintext blocks with the previous ciphertext blocks. The CBC mode requires an IV to combine with the first plaintext block.  The IV need not be secret, but it must be unpredictable. Also, the integrity of the IV should be protected.
+
+### ELECTRONIC COOKBOOK MODE
+__The Electronic Codebook (ECB) mode__ is a confidentiality mode that features, for a given key, the assignment of a fixed ciphertext block to each plaintext block, analogous to the assignment of code words in a codebook.
 
 ### CONSOLE DISPLAY
 ![Screenshot](picture1.png)
