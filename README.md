@@ -5,8 +5,8 @@ Usage: python base64_blowfish.py
 
 | LANGUAGE | FILENAME               | MD5 HASH                         | CONFIDENTIALITY MODE |
 |------    |------                  | -------                          | -----                |
-| python   | base64-blowfish_cbc.py | f7ca18665c89615e6e1c033e278b6312 | CBC                  |
-| python   | base64-blowfish_ecb.py | d0c0530f7572d4cec5c8abef58f91d18 | ECB                  |
+| python   | base64-blowfish_cbc.py | 3423163bd042db4c5b9cf05e25cd46ce | CBC                  |
+| python   | base64-blowfish_ecb.py | 0ecd180dfa12400430729df0e9325b48 | ECB                  |
 
 - [x] For more information on 'confidentiality mode' - see https://csrc.nist.gov/Projects/Block-Cipher-Techniques/BCM
 

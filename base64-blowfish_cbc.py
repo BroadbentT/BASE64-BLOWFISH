@@ -23,7 +23,7 @@ from Crypto.Protocol.KDF import PBKDF2
 # -------------------------------------------------------------------------------------
 # AUTHOR  : Terence Broadbent                                                    
 # CONTRACT: GitHub                                                               
-# Version : 2.0                                                                
+# Version : 1.0                                                                
 # Details : Display my universal header.    
 # Modified: N/A                                                               
 # -------------------------------------------------------------------------------------
@@ -47,7 +47,6 @@ print "                                  BY TERENCE BROADBENT BSC CYBER SECURITY
 
 plainText  = "Blessent mon coeur d'une langueur monotone"
 companyKey = 'W269N-WFGWX-YVC9B-4J6C9-T83GX'
-
 blockSize  = 32 				# 16 to 256 bytes, in multiples of 16 in length.
 padding    = lambda s: s + (blockSize - len(s) % blockSize) * chr(blockSize - len(s) % blockSize)
 unpad      = lambda s: s[:-ord(s[len(s) - 1:])]
@@ -84,7 +83,7 @@ def decrypt(encryption, companyKey):
 # AUTHOR  : Terence Broadbent                                                    
 # CONTRACT: GitHub
 # Version : 1.0                                                                
-# Details : MAIN - Display program variables, and encrypt/decrypt plainText.
+# Details : MAIN - Display program variables.
 # Modified: N/A
 # -------------------------------------------------------------------------------------
 
@@ -94,8 +93,18 @@ print "Unique Salt : Pots de sel et de poivre"
 print "Private Key : " + base64.b64encode(Key(companyKey))
 print "Cipher Mode : CBC\n"
 
+# ------------------------------------------------------------------------------------- 
+# AUTHOR  : Terence Broadbent                                                    
+# CONTRACT: GitHub
+# Version : 1.0                                                                
+# Details : MAIN - Encrypt and decrypt plainText and show the results.
+# Modified: N/A
+# -------------------------------------------------------------------------------------
+
 encrypted = encrypt(plainText, companyKey)
-print "Encrypted   : " + encrypted
- 
 decrypted = decrypt(encrypted, companyKey)
+print "Encrypted   : " + encrypted
 print "Decrypted   : " + decrypted + "\n"
+
+
+
