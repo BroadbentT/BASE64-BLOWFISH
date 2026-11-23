@@ -1,12 +1,11 @@
 # BASE64 / BLOWFISH ENCODERS
-
-### Python scripts for encoding and decoding Base64/Blowfish text strings using Password-Based Key Derivation Function 2 (PBKDF2).
-
-These Python scripts provide Base64 encoding and decoding alongside Blowfish encryption and decryption, using PBKDF2 to derive cryptographic keys from user-supplied passwords.
+*Python scripts for encoding and decoding Base64/Blowfish text strings using Password-Based Key Derivation Function 2 (PBKDF2)*
 
 <p align="center">
   <img src="https://github.com/BroadbentT/BASE64-BLOWFISH/blob/master/Neon%20Base64%20Blowfish%20Encryption%20Flow.png" alt="BASE64-BLOWFISH Encryption Flow Infographic">
 </p>
+
+These Python scripts provide Base64 encoding and decoding alongside Blowfish encryption and decryption, using PBKDF2 to derive cryptographic keys from user-supplied passwords.
 
 ## Usage
 
