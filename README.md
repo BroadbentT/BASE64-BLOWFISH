@@ -1,71 +1,145 @@
-# BASE64/BLOWFISH ENCODERS
-## PYTHON SCRIPT FILES TO ENCODE AND DECODE BASE64/BLOWFISH TEXT STRINGS VIA A 'PASSWORD BASED KEY DERIVATION FUNCTION' (PBKDF2).
+# BASE64 / BLOWFISH ENCODERS
 
-Usage: python base64_blowfish.py
+### Python scripts for encoding and decoding Base64/Blowfish text strings using Password-Based Key Derivation Function 2 (PBKDF2).
 
-| LANGUAGE | FILENAME               | MD5 HASH                         | CONFIDENTIALITY MODE |
-|------    |------                  | -------                          | -----                |
-| python   | base64-blowfish_cbc.py | 3423163bd042db4c5b9cf05e25cd46ce | CBC                  |
-| python   | base64-blowfish_ecb.py | 0ecd180dfa12400430729df0e9325b48 | ECB                  |
+These Python scripts provide Base64 encoding and decoding alongside Blowfish encryption and decryption, using PBKDF2 to derive cryptographic keys from user-supplied passwords.
 
-- [x] For more information on 'confidentiality mode' - see https://csrc.nist.gov/Projects/Block-Cipher-Techniques/BCM
+<p align="center">
+  <img src="https://github.com/BroadbentT/BASE64-BLOWFISH/blob/master/Neon%20Base64%20Blowfish%20Encryption%20Flow.png" alt="BASE64-BLOWFISH Encryption Flow Infographic">
+</p>
 
-### PBKDF2
-In cryptology, __Password-Based Key Derivation Function (PBKDF1 and PBKDF2)__ are key derivation functions with a sliding computational cost, used to reduce vulnerabilities to brute force attacks. PBKDF2 is part of RSA Laboratories' Public-Key Cryptography Standards (PKCS) series, specifically PKCS #5 v2.0, also published as Internet Engineering Task Force's RFC 2898. It supersedes PBKDF1, which could only produce derived keys up to 160 bits long. RFC 8018 (PKCS #5 v2.1), published in 2017, recommends PBKDF2 for password hashing.
+## Usage
 
-### CIPHER BLOCK CHAINING MODE
-__The Cipher Block Chaining (CBC) mode__ is a confidentiality mode whose encryption process features the combining (“chaining”) of the plaintext blocks with the previous ciphertext blocks. The CBC mode requires an IV to combine with the first plaintext block.  The IV need not be secret, but it must be unpredictable. Also, the integrity of the IV should be protected.
+Run the Python script from the command line:
 
-### ELECTRONIC COOKBOOK MODE
-__The Electronic Codebook (ECB) mode__ is a confidentiality mode that features, for a given key, the assignment of a fixed ciphertext block to each plaintext block, analogous to the assignment of code words in a codebook.
+```bash
+python base64_blowfish.py
+```
 
-### CONSOLE DISPLAY
-![Screenshot](picture1.png)
+## Available Scripts
 
-Approved confidentiality modes include:-
+| Language | Filename | MD5 Hash | Confidentiality Mode |
+|:---|:---|:---|:---|
+| Python | `base64-blowfish_cbc.py` | `3423163bd042db4c5b9cf05e25cd46ce` | CBC |
+| Python | `base64-blowfish_ecb.py` | `0ecd180dfa12400430729df0e9325b48` | ECB |
 
-> CBC: An IV-based encryption scheme, the mode is secure as a probabilistic encryption scheme, achieving indistinguishability from random bits, assuming a random IV. 
-> Confidentiality is not achieved if the IV is merely a nonce, nor if it is a nonce enciphered under the same key used by the scheme, as the standard incorrectly suggests to do. 
-> Ciphertexts are highly malleable. 
-> No chosen ciphertext attack (CCA) security. 
-> Confidentiality is forfeit in the presence of a correct-padding oracle for many padding methods.
-> Encryption inefficient from being inherently serial.
-> Widely used, the mode’s privacy-only security properties result in frequent misuse.
-> Can be used as a building block for CBC-MAC algorithms. I can identify no important advantages over CTR mode.
+- [x] For further information on block cipher confidentiality modes, see the [NIST Block Cipher Techniques](https://csrc.nist.gov/Projects/Block-Cipher-Techniques/BCM) reference.
 
-> CFB: Cipher feedback is an IV-based encryption scheme, the mode is secure as a probabilistic encryption scheme, achieving indistinguishability from random bits, assuming a random IV. 
-> However, confidentiality is not achieved if the IV is predictable, nor if it is made by a nonce enciphered under the same key used by the scheme, as the standard incorrectly suggests to do.
-> Ciphertexts are malleable. 
-> No CCA-security. 
-> Encryption inefficient from being inherently serial.
-> Scheme depends on a parameter s, 1 ≤ s ≤ n, typically s = 1 or s = 8. Inefficient for needing one blockcipher call to process only s bits. 
-> The mode achieves an interesting  “self-synchronization” property; insertion or deletion of any number of s-bit characters into the ciphertext only temporarily disrupts correct decryption.
+---
 
-> CTR: An IV-based encryption scheme, the mode achieves indistinguishability from random bits assuming a nonce IV.
-> As a secure nonce-based scheme, the mode can also be used as a probabilistic encryption scheme, with a random IV.
-> Complete failure of privacy if a nonce gets reused on encryption or decryption.
-> The parallelizability of the mode often makes it faster, in some settings much faster, than other confidentiality modes.
-> An important building block for authenticated-encryption schemes.
-> Overall, usually the best and most modern way to achieve privacy-only encryption.
+## Password-Based Key Derivation Function 2 (PBKDF2)
 
-> ECB: A blockcipher, the mode enciphers messages that are a multiple of n bits by separately enciphering each n-bit piece.
-> The security properties are weak, the method leaking equality of blocks across both block positions and time. 
-> Of considerable legacy value, and of value as a building block for other schemes, but the mode does not achieve any generally desirable security goal in its own right and must be used with considerable caution; ECB should not be regarded as a “general-purpose” confidentiality mode.
+**PBKDF2 (Password-Based Key Derivation Function 2)** is a cryptographic key derivation function designed to derive secure keys from passwords.
 
-> OFB: An IV-based encryption scheme, the mode is secure as a probabilistic encryption scheme, achieving indistinguishability from random bits, assuming a random IV. 
-> Confidentiality is not achieved if the IV is a nonce, although a fixed sequence of IVs (eg, a counter) does work fine. 
-> Ciphertexts are highly malleable.
-> No CCA security.
-> Encryption and decryption inefficient from being inherently serial.
-> Natively encrypts strings of any bit length (no padding needed). 
-> I can identify no important advantages over CTR mode.
+It uses a salt and an adjustable computational cost (iteration count) to make password-guessing and brute-force attacks more expensive.
 
-> XTS: An IV-based encryption scheme, the mode works by applying a tweakable blockcipher (secure as a strong-PRP) to each n-bit chunk.
-> For messages with lengths not divisible by n, the last two blocks are treated specially. 
-> The only allowed use of the mode is for encrypting data on a block-structured storage device. 
-> The narrow width of the underlying PRP and the poor treatment of fractional final blocks are problems. 
-> More efficient but less desirable than a (wide-block) PRP-secure blockcipher would be.
+PBKDF2 is part of the RSA Laboratories Public-Key Cryptography Standards (PKCS) series, specifically PKCS #5. It was originally specified in RFC 2898 and subsequently updated in RFC 8018 (PKCS #5 v2.1), published in 2017.
 
-More information is available here - https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38a.pdf
+PBKDF2 supports the derivation of cryptographic keys of different lengths and is commonly used in password-based encryption systems.
 
+Further information:
 
+- [RFC 8018 – PKCS #5 v2.1](https://datatracker.ietf.org/doc/html/rfc8018)
+- [RFC 2898 – PKCS #5](https://datatracker.ietf.org/doc/html/rfc2898)
+
+---
+
+## Blowfish Encryption Algorithm
+
+**Blowfish** is a symmetric-key block cipher designed by Bruce Schneier and published in 1993.
+
+It uses a variable-length key, ranging from 32 bits to 448 bits, and operates on 64-bit data blocks.
+
+The algorithm uses a 16-round Feistel network and consists of key-dependent substitution and permutation operations.
+
+Key characteristics:
+
+- Symmetric-key encryption and decryption.
+- Variable-length keys from 32 to 448 bits.
+- Fixed 64-bit block size.
+- Uses a 16-round Feistel network.
+- Supports several confidentiality modes, including CBC and ECB.
+- Requires appropriate padding when the plaintext does not fill complete blocks in modes such as CBC and ECB.
+- Relatively efficient in software implementations.
+
+Blowfish remains an important historical encryption algorithm, although its 64-bit block size makes it unsuitable for many modern high-volume encryption applications.
+
+---
+
+## Blowfish Confidentiality Modes
+
+The scripts demonstrate two confidentiality modes: Cipher Block Chaining (CBC) and Electronic Codebook (ECB).
+
+### Cipher Block Chaining (CBC)
+
+**Cipher Block Chaining (CBC)** is a confidentiality mode in which each plaintext block is combined with the previous ciphertext block before encryption.
+
+The first plaintext block is combined with an Initialization Vector (IV).
+
+Key characteristics:
+
+- Requires an IV for encryption.
+- The IV does not need to be secret, but must be unpredictable.
+- IV integrity should be protected.
+- Requires padding when plaintext is not an exact multiple of the block size.
+- Encryption is inherently serial, limiting parallel processing.
+- Ciphertext is malleable and CBC alone does not provide authentication.
+- Susceptible to padding-oracle attacks when incorrectly implemented.
+- Can be used as a building block for CBC-MAC authentication schemes.
+
+For Blowfish, the IV must be 64 bits (8 bytes), matching its block size.
+
+CBC must be combined with an appropriate authentication mechanism when used in applications requiring both confidentiality and integrity.
+
+### Electronic Codebook (ECB)
+
+**Electronic Codebook (ECB)** is the simplest block cipher operating mode. Each plaintext block is encrypted independently using the same key.
+
+Key characteristics:
+
+- Each block is encrypted independently.
+- Identical plaintext blocks produce identical ciphertext blocks under the same key.
+- Does not require an IV.
+- Allows parallel encryption and decryption.
+- Reveals patterns in the original plaintext.
+- Does not provide authentication or integrity protection.
+
+ECB has historical and legacy applications but is unsuitable for general-purpose data encryption. It should not be used to protect ordinary messages or files.
+
+---
+
+## Console Display
+
+The following screenshot illustrates the program's console interface.
+
+![BASE64-BLOWFISH Console Display](picture1.png)
+
+---
+
+## Security Considerations
+
+Although Blowfish was a significant development in symmetric-key cryptography, its 64-bit block size presents limitations for modern applications.
+
+Important considerations:
+
+- **Block size:** Blowfish processes data in 64-bit blocks, increasing the risk of block collisions when large amounts of data are encrypted with the same key.
+- **CBC:** Requires a correctly generated unpredictable IV and should be combined with authentication to protect ciphertext integrity.
+- **ECB:** Does not conceal repeated plaintext patterns and should not be used for general-purpose encryption.
+- **PBKDF2:** Should be configured with an appropriate salt, iteration count and derived-key length.
+- **Authentication:** Neither CBC nor ECB provides authenticated encryption on its own.
+
+For new applications, a modern authenticated encryption algorithm such as AES-GCM is generally preferable.
+
+Blowfish is best regarded as a legacy encryption algorithm for educational, experimental and compatibility purposes rather than a recommended choice for new security-sensitive applications.
+
+---
+
+## Further Reading and References
+
+- [NIST – Block Cipher Techniques](https://csrc.nist.gov/Projects/Block-Cipher-Techniques/BCM)
+- [NIST SP 800-38A – Recommendation for Block Cipher Modes of Operation](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38a.pdf)
+- [RFC 8018 – PKCS #5 v2.1](https://datatracker.ietf.org/doc/html/rfc8018)
+- [RFC 2898 – PKCS #5](https://datatracker.ietf.org/doc/html/rfc2898)
+- [Bruce Schneier – The Blowfish Encryption Algorithm](https://www.schneier.com/academic/blowfish/)
+
+**Project Repository:** [BroadbentT / BASE64-BLOWFISH](https://github.com/BroadbentT/BASE64-BLOWFISH)
